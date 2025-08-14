@@ -138,7 +138,7 @@ export default function ChatbotUI(): JSX.Element {
     setMessages(updatedMessages);
     setInput("");
     setIsTyping(false);
-    setPending({ isThinking: true, placeholder: "Typing..." });
+    setPending({ isThinking: true, placeholder: "Typing...." });
 
     const replyText = await callGeminiAPI(updatedMessages, parsedPDFText);
 
