@@ -11,7 +11,6 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Paperclip, Send, Bot, User, Trash2, FileText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 type Role = "user" | "assistant" | "system";
 
 interface ChatMessage {
@@ -50,7 +49,8 @@ declare global {
   }
 }
 
-const GEMINI_API_KEY = "AIzaSyDQLC4Q4QcKHSJ04zV752im0MWqNqa95Vg";
+ const GEMINI_API_KEY =process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+
 
 
 const uid = (() => {
@@ -140,7 +140,7 @@ export default function ChatbotUI(): JSX.Element {
     setIsTyping(false);
     setPending({ isThinking: true, placeholder: "Typing...." });
 
-    const replyText = await callGeminiAPI(updatedMessages, parsedPDFText);
+    const replyText = await callGeminiAPI(updatedMessages, parsedPDFText)
 
     const botMsg: ChatMessage = {
       id: uid(),
